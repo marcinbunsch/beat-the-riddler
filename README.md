@@ -1,10 +1,12 @@
-# Welcome to Hackstrap
+# Welcome to Riddler's Revenge!
+
+Riddler's Revenge! is a puzzle app that can be used for events. It's based on Hackstrap.
 
 Hackstrap is a basic Rails 4 app with Github and Twitter login. I use it as a base for apps supporting events.
 
 ### Development
 
-You can run Hackstrap in development without Twitter or Github setup.
+You can run the app in development without Twitter or Github setup.
 
 To access as a player, run:
 
