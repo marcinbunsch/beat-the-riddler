@@ -1,0 +1,28 @@
+= form_for(@puzzle) do |f|
+  %p
+    = f.label :name
+    = f.text_field :name
+
+  %p
+    = f.label :content
+    %span.help-block
+      You can use 
+      %a{ :href => 'http://daringfireball.net/projects/markdown/syntax' }
+        Markdown
+    = f.text_area :content
+
+  %p
+    = f.label :answer
+    = f.text_area :answer
+
+  - if @puzzle.errors.any?
+
+    #error_explanation
+      %h2
+        = pluralize(@puzzle.errors.count, "error")
+        prohibited this puzzle from being saved:
+      %ul
+        - @puzzle.errors.full_messages.each do |msg|
+          %li= msg
+  .actions
+    = f.submit :class => 'btn'

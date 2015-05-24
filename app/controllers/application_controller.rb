@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
     !(Rails.env.development? || Rails.env.test?)
   end
 
+  def is_staff?
+    current_user.staff?
+  end
+
 end

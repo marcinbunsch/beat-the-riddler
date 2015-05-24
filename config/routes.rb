@@ -1,5 +1,16 @@
 Hackstrap::Application.routes.draw do
 
+  resources :puzzles do
+    member do
+      put 'take_a_guess'
+    end
+  end
+  get "/rankings" => 'rankings#show'
+  get "/api/rankings" => 'api/rankings#scoresheet'
+
+  resources :users, only: [:show]
+
+
   get "/oauth/github" => 'oauth/github#new'
   get "/oauth/github/callback" => 'oauth/github#create'
 

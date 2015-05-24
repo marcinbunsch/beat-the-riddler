@@ -12,6 +12,7 @@ gem "thin"
 gem 'jquery-rails', '2.0.1'
 gem "pg"
 gem "rails_12factor"
+gem "redcarpet"
 
 # Gems used only for assets and not required
 # in production environments by default.

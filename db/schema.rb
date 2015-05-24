@@ -16,6 +16,24 @@ ActiveRecord::Schema.define(version: 20120711093223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "guesses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "puzzle_id"
+    t.boolean  "correct"
+    t.text     "provided_answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "puzzles", force: :cascade do |t|
+    t.text     "name"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "answer"
+    t.integer  "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "avatar_url"
