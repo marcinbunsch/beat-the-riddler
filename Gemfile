@@ -11,7 +11,6 @@ gem "haml"
 gem "thin"
 gem 'jquery-rails', '2.0.1'
 gem "pg"
-gem "rails_12factor"
 gem "redcarpet"
 
 # Gems used only for assets and not required
@@ -32,4 +31,5 @@ end
 
 group :production do
   gem 'rails_serve_static_assets'
+  gem "rails_12factor"
 end
