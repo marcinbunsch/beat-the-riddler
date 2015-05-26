@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_staff
-    redirect_to "/" unless current_user.staff?
+    if current_user
+      redirect_to "/" unless current_user.staff?
+    end
   end
 
   def ssl_configured?
