@@ -7,6 +7,8 @@ class LevelAccess < Struct.new(:team)
     score >= count
   end
 
+  private
+
   def get_count_for(level)
     counts[level] || 0
   end

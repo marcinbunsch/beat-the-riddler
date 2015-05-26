@@ -19,8 +19,4 @@ class Team < ActiveRecord::Base
     Guess.where(:puzzle_id => puzzle.id, :team_id => self.id).count
   end
 
-  def level_access
-    LevelAccess.new(self)
-  end
-
 end

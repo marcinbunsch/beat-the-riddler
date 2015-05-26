@@ -10,9 +10,8 @@
     = link_to 'New Puzzle', new_puzzle_path, :class => 'btn btn-primary'
 
 .puzzles
-  - access = current_user.team.level_access
+  - access = current_user.level_access
   - @levels.each do |level, puzzles|
-    - score = access.get_score_for(level)
     %h2 Level #{level}
     - if access.can_access?(level)
       - puzzles.each_with_index do |puzzle, index|
