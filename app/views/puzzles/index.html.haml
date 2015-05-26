@@ -1,7 +1,3 @@
-.actions
-  - if current_user.staff?
-    = link_to 'New Puzzle', new_puzzle_path, :class => 'btn btn-primary'
-
 %ul.breadcrumb
   %li
     %a{:href => "/"} Home
@@ -9,12 +5,24 @@
   %li.active
     %a{:href => "/puzzles"} Puzzles
 
+.actions
+  - if current_user.staff?
+    = link_to 'New Puzzle', new_puzzle_path, :class => 'btn btn-primary'
+
 .puzzles
-  - @puzzles.each_with_index do |puzzle, index|
-    %h3.puzzle
-      - if current_user.staff?
-        = link_to 'Edit', edit_puzzle_path(puzzle), :class => 'btn'
-      = (index + 1).to_s + '. '
-      - guessed_class = current_user.guessed?(puzzle) ? "done" : ''
-      = link_to puzzle.name, puzzle, :class => "puzzle #{guessed_class}"
+  - access = current_user.level_access
+  - @levels.each do |level, puzzles|
+    - score = access.get_score_for(level)
+    %h2 Level #{level}
+    - if access.can_access?(level)
+      - puzzles.each_with_index do |puzzle, index|
+        %h3.puzzle
+          - if current_user.staff?
+            = link_to 'Edit', edit_puzzle_path(puzzle), :class => 'btn'
+          = (index + 1).to_s + '. '
+          - guessed_class = current_user.guessed?(puzzle) ? "done" : ''
+          = link_to puzzle.name, puzzle, :class => "puzzle #{guessed_class}"
+    - else
+      %p Solve all puzzles on level #{level-1} to unlock level #{level}!
+
 

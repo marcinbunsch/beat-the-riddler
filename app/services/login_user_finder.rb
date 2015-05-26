@@ -7,9 +7,8 @@ class LoginUserFinder
   def find
     if in_development? && mock_enabled?
       @current_user = mock_user
-      p @current_user
     else
-      @current_user = User.find_by_id(@user_id)
+      User.find_by_id(@user_id)
     end
   end
 
@@ -17,7 +16,11 @@ class LoginUserFinder
 
   def mock_user
     @found ||= User.find_by_id(-1)
-    return @found if @found
+    if @found
+      @found.staff = mock_is_staff?
+      @found.save
+      return @found
+    end
     u = User.new
     u.id = -1
     u.username = 'developer'

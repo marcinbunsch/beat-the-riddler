@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     Guess.where(:puzzle_id => puzzle.id, :user_id => self.id).count
   end
 
+  def level_access
+    LevelAccess.new(self)
+  end
+
 end

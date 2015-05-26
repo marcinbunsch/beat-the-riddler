@@ -4,9 +4,13 @@
     = f.text_field :name
 
   %p
+    = f.label :level
+    = f.text_field :level
+
+  %p
     = f.label :content
     %span.help-block
-      You can use 
+      You can use
       %a{ :href => 'http://daringfireball.net/projects/markdown/syntax' }
         Markdown
     = f.text_area :content

@@ -6,6 +6,7 @@ class PuzzlesController < ApplicationController
   # GET /puzzles.json
   def index
     @puzzles = Puzzle.all
+    @levels = @puzzles.group_by(&:level).sort_by { |a| a[0] }
 
     respond_to do |format|
       format.html # index.html.erb
@@ -99,7 +100,7 @@ class PuzzlesController < ApplicationController
   private
 
   def puzzle_params
-    params.require(:puzzle).permit(:name, :content, :answer)
+    params.require(:puzzle).permit(:name, :content, :answer, :level)
   end
 
 end
