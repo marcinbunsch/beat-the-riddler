@@ -28,22 +28,23 @@
     = link_to 'Destroy', @puzzle, confirm: 'Are you sure?', method: :delete, :class => 'btn'
 
   .answer
-    - if current_user.team.guessed?(@puzzle)
+    - guess_count = current_user.team ? current_user.team.guess_count_for_puzzle(@puzzle) : 0
+    - guessed = current_user.team ? current_user.team.guessed?(@puzzle) : false
+    - if guessed
       .hero-unit
         %h1
           %span.green &#10003;
           You got it!
         %p
           Your team gave a correct answer after
-          - count = current_user.team.guess_count_for_puzzle(@puzzle)
-          = count
-          = count == 1 ? "guess" : "guesses"
+          = guess_count
+          = guess_count == 1 ? "guess" : "guesses"
     - else
 
       = form_tag("/puzzles/#{@puzzle.id}/take_a_guess", :method => :put) do
         %h3
           Enter your answer here:
-        - if (count = current_user.team.guess_count_for_puzzle(@puzzle)) > 0
+        - if (count = guess_count) > 0
           %p
             You have tried
             = count
