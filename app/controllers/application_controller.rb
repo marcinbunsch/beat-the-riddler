@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   force_ssl if: :ssl_configured?
 
   before_filter :authenticate_user
+  before_filter :ensure_team
 
   def authenticate_user
     find_user
@@ -29,6 +30,13 @@ class ApplicationController < ActionController::Base
 
   def is_staff?
     current_user.staff?
+  end
+
+  def ensure_team
+    return true if is_staff?
+    if current_user and current_user.team_id.nil?
+      redirect_to "/join"
+    end
   end
 
 end

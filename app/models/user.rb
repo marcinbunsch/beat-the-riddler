@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   class << self
     def scoresheet
-      where('admin IS NOT TRUE').all.map{|user| { :user_id => user.id, :name => user.username, :score => user.score }}.sort{ |a,b| b[:score] <=> a[:score] }
+      where('staff IS NOT TRUE').all.map{|user| { :user_id => user.id, :name => user.username, :score => user.score }}.sort{ |a,b| b[:score] <=> a[:score] }
     end
   end
 

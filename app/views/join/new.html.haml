@@ -1,0 +1,7 @@
+= form_tag("/join") do |f|
+  %p
+    = text_field_tag :password
+
+  .actions
+    = submit_tag "Enter password", :class => 'btn'
+

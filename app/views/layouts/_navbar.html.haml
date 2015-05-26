@@ -16,10 +16,11 @@
             %ul.dropdown-menu
               %li
                 %a{:href => "/logout"} Logout
-          %li
-            %a{ :href => '/rankings'} Ranking
-          %li
-            %a{ :href => '/puzzles'} Puzzles
+          - if current_user.staff? or current_user.team_id
+            %li
+              %a{ :href => '/rankings'} Ranking
+            %li
+              %a{ :href => '/puzzles'} Puzzles
           - if current_user.staff?
             %li
               %a{ :href => '/teams'} Teams

@@ -5,4 +5,15 @@
   %li.active
     %a{:href => "/rankings"} Ranking
 
-= render "rankings/ranking"
+#ranking
+  %table.table-bordered.table-striped#standings
+    %tr.header
+      %th.rank  Place
+      %th.name  Name
+      %th.count Score
+    - @scores.each_with_index do |item, index|
+      %tr.entry
+        %td= index + 1
+        %td= item[:name]
+        %td= item[:score]
+

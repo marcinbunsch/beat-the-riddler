@@ -1,5 +1,8 @@
 Hackstrap::Application.routes.draw do
 
+  get  'join' => 'join#new'
+  post 'join' => 'join#create'
+
   resources :teams
   resources :puzzles do
     member do
