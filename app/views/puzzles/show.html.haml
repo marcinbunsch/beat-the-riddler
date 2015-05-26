@@ -43,7 +43,7 @@
       = form_tag("/puzzles/#{@puzzle.id}/take_a_guess", :method => :put) do
         %h3
           Enter your answer here:
-        - if (count = current_user.guess_count_for_puzzle(@puzzle)) > 0
+        - if (count = current_user.team.guess_count_for_puzzle(@puzzle)) > 0
           %p
             You have tried
             = count
