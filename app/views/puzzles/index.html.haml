@@ -11,6 +11,7 @@
 
 .puzzles
   - access = current_user.level_access
+  - team = current_user.team
   - @levels.each do |level, puzzles|
     %h2 Level #{level}
     - if access.can_access?(level)
@@ -19,8 +20,12 @@
           - if current_user.staff?
             = link_to 'Edit', edit_puzzle_path(puzzle), :class => 'btn'
           = (index + 1).to_s + '. '
-          - guessed_class = current_user.team.guessed?(puzzle) ? "done" : ''
-          = link_to puzzle.name, puzzle, :class => "puzzle #{guessed_class}"
+          - if team
+            - guessed_class = team.guessed?(puzzle) ? "done" : ''
+            = link_to puzzle.name, puzzle, :class => "puzzle #{guessed_class}"
+          - else
+            = link_to puzzle.name, puzzle, :class => "puzzle"
+
     - else
       %p Solve all puzzles on level #{level-1} to unlock level #{level}!
 
