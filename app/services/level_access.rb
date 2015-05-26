@@ -1,4 +1,4 @@
-class LevelAccess < Struct.new(:user)
+class LevelAccess < Struct.new(:team)
 
   def can_access?(level)
     return true if level == 1
@@ -24,7 +24,7 @@ class LevelAccess < Struct.new(:user)
   end
 
   def guessed_puzzle_ids
-    Guess.where(:user_id => user.id, :correct => true).select('distinct(puzzle_id)')
+    Guess.where(:team_id => team.id, :correct => true).select('distinct(puzzle_id)')
   end
 
 end

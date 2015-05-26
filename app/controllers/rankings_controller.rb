@@ -1,5 +1,5 @@
 class RankingsController < ApplicationController
   def show
-    @scores = User.scoresheet
+    @scores = Team.scoresheet
   end
 end
