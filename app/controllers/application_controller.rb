@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
 
   def store_user_history
     return unless current_user
+    return if current_user.respond_to?(:ignore_in_history) and current_user.ignore_in_history?
     UserHistory.create({
       :user_id => current_user.id,
       :data => params.to_json
