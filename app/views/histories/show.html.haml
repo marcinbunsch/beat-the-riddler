@@ -1,5 +1,8 @@
 - if current_user.staff?
   %h2 History
+  - if last_history_id = @histories.last.try(:id)
+    .paging
+      %a.btn{ href: "?last_history_id=#{last_history_id}" } Next page
   %table.history
     %tr
       %th.date Date
@@ -18,5 +21,6 @@
           %a.reveal{href: '#'} Show details
           %pre.details= JSON.pretty_generate(data)
   - if last_history_id = @histories.last.try(:id)
-    %a{ href: "?last_history_id=#{last_history_id}" } Next page
+    .paging
+      %a.btn{ href: "?last_history_id=#{last_history_id}" } Next page
 

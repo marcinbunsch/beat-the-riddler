@@ -36,5 +36,6 @@
           %a.reveal{href: '#'} Show details
           %pre.details= JSON.pretty_generate(data)
   - if last_history_id = @history.last.try(:id)
-    %a{ href: "?last_history_id=#{last_history_id}" } Next page
+    .paging
+      %a.btn{ href: "?last_history_id=#{last_history_id}" } Next page
 
