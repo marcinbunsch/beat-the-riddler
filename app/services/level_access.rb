@@ -3,6 +3,8 @@ class LevelAccess < Struct.new(:team)
   def can_access?(level)
     return true if level == 1
     return true if level == 2
+    return true if level == 3
+    return true if level == 4
     score = get_score_for(level-1)
     required = get_required_for(level-1)
     score >= required
