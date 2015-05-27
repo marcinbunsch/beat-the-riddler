@@ -3,12 +3,12 @@
     %a{:href => "/"} Home
     %span.divider /
   %li.active
-    %a{:href => "/puzzles"} Puzzles
+    %a{:href => "/puzzles"} Riddles
 
 .section
   .actions
     - if current_user.staff?
-      = link_to 'New Puzzle', new_puzzle_path, :class => 'btn btn-primary'
+      = link_to 'New Riddle', new_puzzle_path, :class => 'btn btn-primary'
 
   .puzzles
     - access = current_user.level_access
