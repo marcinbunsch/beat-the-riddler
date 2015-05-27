@@ -3,7 +3,7 @@ class Team < ActiveRecord::Base
 
   class << self
     def scoresheet
-      all.map{|team| { :name => team.name, :score => team.score }}.sort{ |a,b| b[:score] <=> a[:score] }
+      all.where('staff IS FALSE').map{|team| { :name => team.name, :score => team.score }}.sort{ |a,b| b[:score] <=> a[:score] }
     end
   end
 
