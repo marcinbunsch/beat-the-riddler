@@ -1,15 +1,15 @@
-.hero-unit.home
+.hero-unit.home.user-page
 
+  %img{:src => @user.avatar_url}
   %h1
-    %img{:src => @user.avatar_url}
     %span= @user.username
   - if @user.provider == 'github'
-    %p
+    %p.link
       %a{ :href => "https://github.com/#{@user.username}"}
         == See #{@user.username}'s GitHub profile
 
   - if @user.provider == 'twitter'
-    %p
+    %p.link
       %a{ :href => "https://twitter.com/#{@user.username}"}
         == See #{@user.username}'s Twitter profile
 
