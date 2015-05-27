@@ -88,6 +88,12 @@ class PuzzlesController < ApplicationController
 
   def take_a_guess
     @puzzle = Puzzle.find(params[:id])
+
+    if Guess.attempt_blocked?(@puzzle, current_user)
+      flash[:error] = "Sorry, too many tries within 1 minute. Please wait a moment and try again."
+      return redirect_to(@puzzle)
+    end
+
     guessed = Guess.validate_answer(@puzzle, params[:guess], current_user)
     if guessed
       flash[:notice] = "Correct! WOOT!"
