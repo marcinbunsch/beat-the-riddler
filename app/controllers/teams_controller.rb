@@ -9,7 +9,6 @@ class TeamsController < ApplicationController
 
   # GET /teams/1
   def show
-    @team = current_user.team
   end
 
   # GET /teams/new
