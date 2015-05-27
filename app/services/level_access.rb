@@ -2,9 +2,14 @@ class LevelAccess < Struct.new(:team)
 
   def can_access?(level)
     return true if level == 1
-    count = get_count_for(level-1)
     score = get_score_for(level-1)
-    score >= count
+    required = get_required_for(level-1)
+    score >= required
+  end
+
+  def get_required_for(level)
+    count = get_count_for(level)
+    count > 1 ? count-1 : count
   end
 
   private

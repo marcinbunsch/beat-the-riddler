@@ -2,32 +2,31 @@
   .navbar-inner
     .container
       %a.brand{:href => "/"} Beat the Riddler!
-      .nav-collapse
-        %ul.nav
-          %li.logos
-            %a{:href => '/'}
-              = image_tag current_user.avatar_url
-              = image_tag "logos/icon-#{current_user.provider}.png"
-          %li.dropdown
-            %a.dropdown-toggle.home{ :href => '#', 'data-toggle' => "dropdown"}
-              Hello,
-              = current_user.username
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                %a{:href => "/logout"} Logout
-          - if current_user.staff? or current_user.team_id
+      %ul.nav
+        %li.logos
+          %a{:href => '/'}
+            = image_tag current_user.avatar_url
+            = image_tag "logos/icon-#{current_user.provider}.png"
+        %li.dropdown
+          %a.dropdown-toggle.home{ :href => '#', 'data-toggle' => "dropdown"}
+            Hello,
+            = current_user.username
+            %b.caret
+          %ul.dropdown-menu
             %li
-              %a{ :href => team_path(current_user.team) } My Team
-            %li
-              %a{ :href => '/rankings'} Ranking
-            %li
-              %a{ :href => '/puzzles'} Riddles
-          - if current_user.staff?
-            %li
-              %a{ :href => '/teams'} Teams
-            %li
-              %a{ :href => '/users'} Users
-            %li
-              %a{ :href => '/history'} History
+              %a{:href => "/logout"} Logout
+        - if current_user.staff? or current_user.team_id
+          %li
+            %a{ :href => team_path(current_user.team) } My Team
+          %li
+            %a{ :href => '/rankings'} Ranking
+          %li
+            %a{ :href => '/puzzles'} Riddles
+        - if current_user.staff?
+          %li
+            %a{ :href => '/teams'} Teams
+          %li
+            %a{ :href => '/users'} Users
+          %li
+            %a{ :href => '/history'} History
 
