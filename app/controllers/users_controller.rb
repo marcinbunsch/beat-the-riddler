@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+  before_filter :require_staff, only: [:index]
+
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find_by_id(params[:id])
     load_history if current_user.staff?

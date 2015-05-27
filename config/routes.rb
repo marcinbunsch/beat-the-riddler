@@ -12,7 +12,7 @@ Hackstrap::Application.routes.draw do
   get "/rankings" => 'rankings#show'
   get "/api/rankings" => 'api/rankings#scoresheet'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
 
 
   get "/oauth/github" => 'oauth/github#new'

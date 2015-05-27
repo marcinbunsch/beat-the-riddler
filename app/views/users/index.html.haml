@@ -1,0 +1,12 @@
+.section
+
+%table.history
+  %tr
+    %th.username Username
+    %th.provider Provider
+    %th.staff Staff
+  - @users.each do |user|
+    %tr
+      %td.username= user.username
+      %td.provider= user.provider
+      %td.staff= user.staff
