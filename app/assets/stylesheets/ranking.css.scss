@@ -1,0 +1,62 @@
+body {
+  font-size: 14px;
+  line-height: 20px;
+
+  table#standings {
+    background-color: #fff;
+    width: 100%;
+    margin: 0 auto;
+
+    thead {
+      th.rank {
+        width: 4%;
+      }
+
+      th.name {
+        width: 60%;
+      }
+    }
+
+    tbody {
+
+      td {
+        font-size: 14px;
+        line-height: 20px;
+
+        text-align: center;
+
+        a {
+          color: #333;
+        }
+
+        &.name {
+          font-weight: bold;
+        }
+      }
+
+      tr {
+        height: 30px;
+
+        &.place-1 td {
+          line-height: 50px;
+          font-size: 36px;
+          background-color: #BCE8F1;
+          color: #3A87AD;
+          a {
+            color: #3A87AD;
+          }
+        }
+        &.place-2 td {
+          line-height: 36px;
+          font-size: 24px;
+        }
+        &.place-3 td {
+          line-height: 32px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+
