@@ -1,6 +1,6 @@
 class PuzzlesController < ApplicationController
 
-  before_filter :is_staff?, :only => [:new, :create, :update]
+  before_filter :require_staff, :except => [:index, :show, :take_a_guess]
 
   # GET /puzzles
   # GET /puzzles.json
