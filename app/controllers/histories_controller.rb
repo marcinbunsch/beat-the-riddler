@@ -1,6 +1,5 @@
 class HistoriesController < ApplicationController
   before_filter :require_staff
-  skip_before_filter :store_user_history
 
   def show
     scope = UserHistory.includes(:user).limit(100).order('id DESC')
