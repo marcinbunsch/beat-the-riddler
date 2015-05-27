@@ -11,7 +11,6 @@
 */
 /*
 *= require vendors/bootstrap.min
-*= require vendors/bootstrap-responsive.min
 *= require_tree .
 *= require_self
 */
