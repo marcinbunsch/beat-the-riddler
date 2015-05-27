@@ -67,3 +67,7 @@ body {
 .history .date {
   width: 200px;
 }
+
+.history .details {
+  display: none;
+}

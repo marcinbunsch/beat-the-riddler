@@ -24,12 +24,17 @@
   %table.history
     %tr
       %th.date Date
-      %th.params Params
+      %th.action Action
+      %th.params Details
     - @history.each do |hist|
+      - data = JSON.parse(hist.data)
       %tr
         %td.date= hist.created_at
+        %td.action
+          = "#{data['controller']}##{data['action']}"
         %td.params
-          %pre= JSON.pretty_generate(JSON.parse(hist.data))
+          %a.reveal{href: '#'} Show details
+          %pre.details= JSON.pretty_generate(data)
   - if last_history_id = @history.last.try(:id)
     %a{ href: "?last_history_id=#{last_history_id}" } Next page
 

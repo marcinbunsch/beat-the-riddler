@@ -7,6 +7,7 @@
     %th.staff Staff
   - @users.each do |user|
     %tr
-      %td.username= user.username
+      %td.username
+        %a{ :href => user_path(user) }= user.username
       %td.provider= user.provider
       %td.staff= user.staff

@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+  $('a.reveal').click(function(a) {
+    $(a.target).hide().next().show()
+    return false
+  })
+
+})
