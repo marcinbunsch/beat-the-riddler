@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527083649) do
+ActiveRecord::Schema.define(version: 20150527104258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20150527083649) do
     t.datetime "updated_at",                 null: false
     t.boolean  "staff",      default: false
   end
+
+  create_table "user_histories", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_histories", ["user_id", "id"], name: "index_user_histories_on_user_id_and_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

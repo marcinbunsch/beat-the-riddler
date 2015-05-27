@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user
   before_filter :ensure_team
+  before_filter :store_user_history
 
   def authenticate_user
     find_user
@@ -36,6 +37,14 @@ class ApplicationController < ActionController::Base
     if current_user and current_user.team_id.nil?
       redirect_to "/join"
     end
+  end
+
+  def store_user_history
+    return unless current_user
+    UserHistory.create({
+      :user_id => current_user.id,
+      :data => params.to_json
+    })
   end
 
 end

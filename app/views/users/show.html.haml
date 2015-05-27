@@ -19,3 +19,17 @@
     %a{ :href => puzzle_path(guess.puzzle)}
       = guess.puzzle.name
 
+- if current_user.staff?
+  %h2 History
+  %table.history
+    %tr
+      %th.date Date
+      %th.params Params
+    - @history.each do |hist|
+      %tr
+        %td.date= hist.created_at
+        %td.params
+          %pre= JSON.pretty_generate(JSON.parse(hist.data))
+  - if last_history_id = @history.last.try(:id)
+    %a{ href: "?last_history_id=#{last_history_id}" } Next page
+

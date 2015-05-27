@@ -55,3 +55,15 @@ body {
 .section {
 
 }
+.history {
+  background-color: #fff;
+  width: 100%;
+}
+
+.history td, .history th {
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+.history .date {
+  width: 200px;
+}
