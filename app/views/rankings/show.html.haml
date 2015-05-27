@@ -14,7 +14,9 @@
     - @scores.each_with_index do |item, index|
       %tr.entry{ class: "place-#{index+1}" }
         %td= index + 1
-        %td= item[:name]
+        %td
+          %a{ href: "/teams/#{item[:team_id]}" }
+            =item[:name]
         %td= item[:score]
 :javascript
   setInterval(function() { window.location.reload() }, 60 * 1000)

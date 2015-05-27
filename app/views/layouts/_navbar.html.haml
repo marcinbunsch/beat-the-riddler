@@ -18,6 +18,8 @@
                 %a{:href => "/logout"} Logout
           - if current_user.staff? or current_user.team_id
             %li
+              %a{ :href => team_path(current_user.team) } My Team
+            %li
               %a{ :href => '/rankings'} Ranking
             %li
               %a{ :href => '/puzzles'} Puzzles

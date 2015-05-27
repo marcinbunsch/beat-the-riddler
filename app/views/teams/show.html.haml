@@ -1,0 +1,26 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/"} Home
+    %span.divider /
+  %li
+    %a{:href => "/rankings"} Ranking
+    %span.divider /
+  %li.active
+    %a{:href => team_path(@team) }= @team.name
+
+.section.team
+  %h1= @team.name
+
+  .members
+    %h3 Members
+    - @team.users.each do |user|
+      %a{ :href => user_path(user) }
+        %img.member{:src => user.avatar_url}
+
+  %h3 Answered riddles:
+  %ul
+    - @team.guesses.solved.each do |guess|
+      %li
+        %a{ :href => puzzle_path(guess.puzzle)}
+          = guess.puzzle.name
+

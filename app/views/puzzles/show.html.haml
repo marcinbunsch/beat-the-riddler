@@ -8,14 +8,6 @@
   %li.active
     %a{:href => "/puzzles/#{@puzzle.id}"}= @puzzle.name
 
-- if flash[:notice]
-  .alert.alert-success
-    = flash[:notice]
-
-- if flash[:error]
-  .alert.alert-error
-    = flash[:error]
-
 .puzzle
   %h1= @puzzle.name
   - if @puzzle.guesses.solved.count > 0

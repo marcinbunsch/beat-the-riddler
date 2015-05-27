@@ -1,9 +1,10 @@
 class Team < ActiveRecord::Base
   has_many :users
+  has_many :guesses
 
   class << self
     def scoresheet
-      all.where('staff IS FALSE').map{|team| { :name => team.name, :score => team.score }}.sort{ |a,b| b[:score] <=> a[:score] }
+      all.where('staff IS FALSE').map{|team| { :team_id => team.id, :name => team.name, :score => team.score }}.sort{ |a,b| b[:score] <=> a[:score] }
     end
   end
 
