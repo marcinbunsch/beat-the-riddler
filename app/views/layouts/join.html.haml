@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title Beat the Riddler!
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+
+    .join-panel
+      - if flash[:notice]
+        .alert.alert-success
+          = flash[:notice]
+      - if flash[:error]
+        .alert.alert-error
+          = flash[:error]
+      = yield
+
