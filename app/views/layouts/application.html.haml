@@ -10,6 +10,9 @@
       = render "layouts/navbar"
 
     .container
+      - if m = Message.last
+        .message
+          = raw m.content
       - if flash[:notice]
         .alert.alert-success
           = flash[:notice]

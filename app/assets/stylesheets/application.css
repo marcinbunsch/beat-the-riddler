@@ -92,3 +92,12 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.message {
+  background-color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
