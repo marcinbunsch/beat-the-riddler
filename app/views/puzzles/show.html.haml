@@ -13,7 +13,7 @@
   - if @puzzle.guesses.solved.count > 0
     .solved
       Solved by:
-      = raw @puzzle.guesses.solved.reject { |guess| guess.team.staff? }.collect { |guess| link_to(guess.team.name, user_path(guess.user)) }.join(', ')
+      = raw @puzzle.guesses.solved.reject { |guess| guess.team.staff? }.collect { |guess| link_to(guess.team.name, team_path(guess.team)) }.join(', ')
   .content= markdown @puzzle.content
   - if current_user.staff?
     = link_to 'Edit', edit_puzzle_path(@puzzle), :class => 'btn'
