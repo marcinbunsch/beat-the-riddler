@@ -33,7 +33,6 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_team
-    return true if is_staff?
     if current_user and current_user.team_id.nil?
       redirect_to "/join"
     end

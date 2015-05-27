@@ -7,6 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Password</th>
+      <th>Staff?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +17,15 @@
       <tr>
         <td><%= team.name %></td>
         <td><%= team.password %></td>
+        <td><%= team.staff? ? 'yes' : 'no' %></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% unless team.staff? %>
+          <%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+
+        </td>
       </tr>
     <% end %>
   </tbody>

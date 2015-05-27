@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_action :require_staff
+  before_action :require_staff, except: [:show]
 
   # GET /teams
   def index
@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
-      redirect_to @team, notice: 'Team was successfully created.'
+      redirect_to teams_path, notice: 'Team was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   def update
     if @team.update(team_params)
-      redirect_to @team, notice: 'Team was successfully updated.'
+      redirect_to edit_team_path(@team), notice: 'Team was successfully updated.'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
 
   # DELETE /teams/1
   def destroy
-    @team.destroy
+    @team.destroy unless @team.staff?
     redirect_to teams_url, notice: 'Team was successfully destroyed.'
   end
 

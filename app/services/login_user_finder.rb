@@ -17,8 +17,6 @@ class LoginUserFinder
   def mock_user
     @found ||= User.find_by_id(-1)
     if @found
-      @found.staff = mock_is_staff?
-      @found.save
       return @found
     end
     u = User.new
